@@ -1,0 +1,40 @@
+<script setup lang="ts">
+const emit =defineEmits<{
+  addToCart:[product: Product]
+}>()
+interface Product {
+  id: number,
+  title: string,
+  body: string
+}
+interface Props {
+    product: Product
+}
+const props = defineProps<Props>()
+
+
+const handleCartClick = (product: Product) => {
+  emit('addToCart', product )
+}
+</script>
+
+
+<template>
+   <div class="max-w-sm rounded overflow-hidden shadow-lg">
+  <img class="w-full" src="https://images.unsplash.com/photo-1472141521881-95d0e87e2e39?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=872&q=80 872w2141521881-95d0e87e2e39?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3544&q=80 3544w" alt="Sunset in the mountains">
+  <div class="px-6 py-4">
+    <div class="font-bold text-xl mb-2 titulo">{{ product.title }}</div>
+    <p class="text-gray-700 text-base descricao">
+      {{ product.body }}
+    </p>
+  </div>
+  <div class="px-6 pt-4 pb-2">
+    <button class="rounded-full bg-blue-600 text-white p-3" @click="handleCartClick(product)">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+</svg>
+
+    </button>
+  </div>
+</div>
+</template>
